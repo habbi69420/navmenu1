@@ -1,3 +1,27 @@
 <script>
-    
+    // Definieer de JSON-string en parse deze naar een JavaScript-array
+const jsonData = '[{"title": "home","url" : "/"},{"title" : "producten","url" : "/producten/"},{"title": "Over ons","url" : "/overons/"},{"title": "contact","url": "/contact/"}]';
+const menuData = JSON.parse(jsonData);
+
+// Functie om het menu aan te maken
+function createMenu(data) {
+  // Maak een ul-element aan
+  const ul = document.createElement('ul');
+  
+  // Loop door de array en maak een li met een a-element voor elk item
+  data.forEach(item => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = item.url;
+    a.textContent = item.title;
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+
+  return ul;
+}
+
+// Voeg het gegenereerde menu toe aan de body van de pagina
+document.body.appendChild(createMenu(menuData));
+
 </script>
